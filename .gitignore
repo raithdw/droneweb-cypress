@@ -1,28 +1,39 @@
-# Node modules
+# ==============================
+# Node / NPM
+# ==============================
 node_modules/
-
-# Logs
+package-lock.json
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+yarn.lock
 
+# ==============================
 # Cypress
-cypress/videos/
+# ==============================
+# Screenshots and videos
 cypress/screenshots/
-cypress/reports/html/
+cypress/videos/
+
+# Mochawesome reports (JSON + HTML)
 cypress/reports/json/
+cypress/reports/html/
 
-# VS Code
+# Cypress cache
+cypress/.cache/
+
+# ==============================
+# TypeScript
+# ==============================
+*.tsbuildinfo
+
+# ==============================
+# IDE / OS
+# ==============================
 .vscode/
-
-# MacOS
+.idea/
 .DS_Store
+Thumbs.db
 
-# TypeScript build output
-dist/
-build/
-
-# Environment files
-.env
-.env.local
-.env.*.local
+# ==============================
+# Logs
+# ==============================
+*.log

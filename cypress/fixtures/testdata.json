@@ -1,0 +1,36 @@
+{
+  "languages": {
+    "en" : "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "nl": "Nederlands",
+    "fr" : "Français"
+  },
+  "searchLocations": {
+    "Paris": {
+      "search": "Paris",
+      "suggestion": "Paris, Ile-de-France, France",
+      "expectedName": "Pont Neuf, 75001 Paris, France",
+      "expectedCoordinates": "48° 51′ 26″ N 2° 20′ 29″ E"
+    },
+    "Berlin": {
+      "search": "Berlin",
+      "suggestion": "Berlin, Germany",
+      "expectedName": "Platz vor dem Brandenburger Tor, 10117 Berlin, Germany",
+      "expectedCoordinates": "52° 30′ 58″ N 13° 22′ 37″ E"
+    }
+  },
+  "invalidLocations": {
+    "English": {
+    "search": "InvalidCity123",
+    "expectedMessage": "No results found"
+  }
+  },
+  "placeholders": {
+    "en": "Search for locations...",
+    "de": "Adresse, Ort suchen...",
+    "es": "Buscar ubicaciones...",
+    "nl": "Zoek naar locaties...",
+    "fr": "Recherche de lieux..."
+  }
+}

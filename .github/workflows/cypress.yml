@@ -1,0 +1,65 @@
+name: Cypress Automation Tests
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  run-tests-and-deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write  # Required for GitHub Pages deploy
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run Cypress tests
+      - name: Run Cypress tests
+        run: npm run cypress:run
+
+      # Step 5: Merge Mochawesome JSON reports
+      - name: Merge Mochawesome reports
+        if: always()
+        run: npm run cypress:merge
+
+      # Step 6: Generate Mochawesome HTML report
+      - name: Generate Mochawesome HTML report
+        if: always()
+        run: npm run cypress:html
+
+      # Step 7: Upload HTML report as artifact
+      - name: Upload Mochawesome report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/html
+
+      # Step 8: Deploy report to GitHub Pages
+      - name: Deploy Mochawesome report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: cypress/reports/html
+          keep_files: false
+          destination_dir: ''
+
+      # Step 9: Print report URL in Actions summary
+      - name: Mochawesome report link
+        run: |
+          echo "Mochawesome report: https://raithdw.github.io/droneweb-cypress/report.html" >> $GITHUB_STEP_SUMMARY

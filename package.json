@@ -1,0 +1,29 @@
+{
+  "name": "droneweb-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "npx cypress open",
+    "cypress:headed": "npx cypress run --headed --browser chrome",
+    "cypress:run": "npx cypress run",
+    "cypress:merge": "npx mochawesome-merge cypress/reports/json/*.json > cypress/reports/report.json",
+    "cypress:html": "npx mochawesome-report-generator cypress/reports/report.json -o cypress/reports/html --reportFilename report.html",
+    "cypress:open-report": "start \"\" cypress\\reports\\html\\report.html",
+    "cypress:report": "npm run cypress:run && npm run cypress:merge && npm run cypress:html && npm run cypress:open-report"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^25.3.0",
+    "cypress": "^15.10.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "open": "^11.0.0",
+    "open-cli": "^8.0.0",
+    "typescript": "^5.9.3"
+  }
+}
