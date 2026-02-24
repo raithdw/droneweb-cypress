@@ -10,10 +10,11 @@ export default defineConfig({
     charts: true,                  
     embeddedScreenshots: true,      
     saveAllAttempts: true,
-    screenshotOnRunFailure: true,    
-    testIsolation: true      
+    screenshotOnRunFailure: true,         
   },
   e2e: {
+    allowCypressEnv: false,
+    testIsolation: true,
     baseUrl: "https://map.uniflydemo47-iat.unifly.tech",
     viewportWidth: 1440,
     viewportHeight: 900,
