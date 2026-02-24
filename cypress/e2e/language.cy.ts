@@ -13,7 +13,6 @@ describe("Language Selection - E2E + API validation", () => {
     (key: LanguageKey, languageName: LanguageValue) => {
       const placeholderText = data.placeholders[key];
 
-      // Intercept the language request
       cy.intercept("GET", `**/locales/${key}/common.json*`).as("translationRequest");
 
       mapPage.openLanguageDropdown();
@@ -25,16 +24,14 @@ describe("Language Selection - E2E + API validation", () => {
         const responseBody = interception.response?.body;
         expect(responseBody).to.exist;
 
-        // Check that the response contains the selected language text
         expect(responseBody.language_names).to.exist;
         expect(responseBody.language_names[key]).to.eq(languageName);
       });
 
-      // Validate UI placeholder
       mapPage.getSearchPlaceholder()
         .should("be.visible")
         .and("contain.text", placeholderText);
     },
-    (_key, value) => value // show language name in report
+    (_key, value) => value
   );
 });

@@ -1,7 +1,4 @@
 export class MapPage {
-  // ===============================
-  // 🔒 Private Selectors
-  // ===============================
   private readonly selectors = {
     languageDropdownIndicator: '[data-test="language-select.indicator"]',
     languageOption: 'div[role="option"]',
@@ -17,16 +14,10 @@ export class MapPage {
     placeholder: ".rs-select__placeholder"
   };
 
-  // ===============================
-  // 🌍 Navigation
-  // ===============================
   visit(): void {
     cy.visit("/");
   }
 
-  // ===============================
-  // 🌐 Language Handling
-  // ===============================
   openLanguageDropdown(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(this.selectors.languageDropdownIndicator)
       .should("be.visible")
@@ -40,9 +31,6 @@ export class MapPage {
       .click();
   }
 
-  // ===============================
-  // 🔎 Search Handling
-  // ===============================
   getSearchInput(): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(this.selectors.searchInput);
   }
@@ -73,9 +61,6 @@ export class MapPage {
       .should("exist");
   }
 
-  // ===============================
-  // 📝 Actions
-  // ===============================
   typeLocation(location: string): void {
     this.getSearchInput()
       .should("be.visible")
@@ -83,9 +68,6 @@ export class MapPage {
       .type(location);
   }
 
-  /**
-   * Type + select a suggestion automatically
-   */
   searchAndSelectLocation(searchText: string, fullSuggestion: string): void {
     this.typeLocation(searchText);
 

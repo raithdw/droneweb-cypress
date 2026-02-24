@@ -7,7 +7,6 @@ describe("Location Search - Requirement Validation", () => {
   const mapPage = new MapPage();
   const data: TestData = testData;
 
-  // Positive locations
   generateTests(
     "should search, select and verify displayed location",
     data.searchLocations,
@@ -29,7 +28,6 @@ describe("Location Search - Requirement Validation", () => {
     }
   );
 
-  // Negative locations
   if (data.invalidLocations) {
     generateTests(
       "should handle invalid city search in",
