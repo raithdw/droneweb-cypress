@@ -61,17 +61,16 @@ export class MapPage {
       .should("exist");
   }
 
-  typeLocation(location: string): void {
-    this.getSearchInput()
-      .should("be.visible")
-      .clear()
-      .type(location);
-  }
+  typeLocation(location: string): Cypress.Chainable<JQuery<HTMLElement>> {
+  return this.getSearchInput()
+    .should("be.visible")
+    .clear()
+    .type(location);
+}
 
-  searchAndSelectLocation(searchText: string, fullSuggestion: string): void {
+  searchAndSelectLocation(searchText: string,fullSuggestion: string): Cypress.Chainable<JQuery<HTMLElement>> {
     this.typeLocation(searchText);
-
-    this.getSuggestionsMenu()
+    return this.getSuggestionsMenu()
       .contains(this.selectors.suggestionOption, fullSuggestion, { matchCase: false })
       .should("be.visible")
       .click();

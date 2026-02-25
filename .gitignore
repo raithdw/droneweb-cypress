@@ -14,8 +14,7 @@ cypress/screenshots/
 cypress/videos/
 
 # Mochawesome reports (JSON + HTML)
-cypress/reports/json/
-cypress/reports/html/
+cypress/reports
 
 # Cypress cache
 cypress/.cache/
