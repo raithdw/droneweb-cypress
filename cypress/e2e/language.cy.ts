@@ -15,8 +15,9 @@ describe("Language Selection - E2E + API validation", () => {
 
       cy.intercept("GET", `**/locales/${key}/common.json*`).as("translationRequest");
 
-      mapPage.openLanguageDropdown();
-      mapPage.selectLanguage(languageName);
+      // mapPage.openLanguageDropdown();
+      // mapPage.selectLanguage(languageName);
+      cy.selectLanguage(languageName);
 
       cy.wait("@translationRequest").then((interception) => {
         expect(interception.response?.statusCode).to.eq(200);
